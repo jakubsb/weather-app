@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>Weather App</h1>
+    
+    <form method="post" action="/">
+        <label for="coordinates">Enter coordinates (latitude, longitude):</label>
+        <input type="text" id="coordinates" name="coordinates" placeholder="52.52,13.41" required>
+        <button type="submit">Get Weather</button>
+    </form>
+    <p>Weather checked {{ clicks }} times.</p>
+    
+    {% if coordinates %}
+        <p>{{ coordinates }}</p>
+        <p>{{ elevation }}</p>
+        <p>{{ timezone }}</p>
+        <p>{{ utc_offset }}</p>
+
+        {% if daily_data %}
+            <h2>Daily Forecast</h2>
+            {{ daily_data|safe }}
+        {% endif %}
+    {% endif %}
+</body>
+</html>
